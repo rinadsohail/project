@@ -1,8 +1,26 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+
+posts = [
+    {
+        'author': 'RinadS',
+        'title': 'Blog Post 1',
+        'content': 'First post content',
+        'date_posted': 'December 05, 2023'
+    },
+    {
+        'author': 'AdamS',
+        'title': 'Blog Post 2',
+        'content': 'Second post content',
+        'date_posted': 'December 06, 2023'
+    }
+]
+
 
 def home(request):
-    return HttpResponse('<h1>Vegify Home</h1>')
+    context = {
+        'posts': posts
+    }
+    return render(request, 'main/home.html', context)
 
 def about(request):
-    return HttpResponse("<h1>Vegify About</h1>")
+    return render(request, 'main/about.html', {'title': 'About'})
