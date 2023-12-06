@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    {% if title %}
-    <title>Django Main - {{title }}</title>
-    {% else %}
-    <title>Django Main</title>
-    {% endif %}
-</head>
-<body>
+{% extends "main/base.html" %}
+{% block content %}
     <h1>About Page</h1>
-</body>
-</html>
+{% endblock content %}
