@@ -134,7 +134,7 @@ python3 manage.py migrate
 This will apply all the migrations to successfully allow the app to run.
 
 ``` bash
-cd 
+cd ..
 ```
 Takes you out of the current directory and goes one above
 - manage.py is only in the vegify directory - can only be accessed from there
