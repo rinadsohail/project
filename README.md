@@ -86,11 +86,15 @@ version control system - allows you to access your VE from mulitple devices, als
 git commit
 git pull
 git push
+git branch (new_branch_name)
+git checkout (branch)
 
 ```
 Git commit - sets changes up to be sent to github\
 Git pull - takes version from git, checks for any changes made\
 Git push - launches the version onto git\
+Git branch new_branch_name - this creates a new branch with a stated name 
+Git checkout (branch) - this opens up the branch 
 
 ## Starting My Project
 
