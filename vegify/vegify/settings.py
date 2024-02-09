@@ -27,11 +27,11 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-AUTH_USER_MODEL = 'account.User'
+AUTH_USER_MODEL = "user.User"
+
 # Application definition
 
 INSTALLED_APPS = [
-    'account.apps.AccountConfig',
     'main.apps.MainConfig',
     'users.apps.UsersConfig',
     'crispy_forms',
