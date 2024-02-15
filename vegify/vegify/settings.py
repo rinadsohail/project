@@ -32,8 +32,7 @@ AUTH_USER_MODEL = "users.User"
 # Application definition
 
 INSTALLED_APPS = [
-    'main.apps.MainConfig',
-    'users.apps.UsersConfig',
+    'main',
     'crispy_forms',
     'crispy_bootstrap5',
     'django.contrib.admin',
@@ -42,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'users'
 ]
 
 MIDDLEWARE = [
