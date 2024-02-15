@@ -16,7 +16,7 @@ def register(request):
         form = UserRegisterForm()
     return render(request, 'users/register.html', {'form': form})
 
-
+# this ensures that you are only able to see the profile view if you're logged into an account
 @login_required
 def profile(request):
     return render(request, 'users/profile.html')
