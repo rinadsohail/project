@@ -40,6 +40,3 @@ class Customer(User):
     
     def welcome(self):
         return "Only for customers"
-
-
-    
