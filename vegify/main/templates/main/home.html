@@ -1,15 +1,116 @@
 {% extends "main/base.html" %}
 {% block content %}
-    {% for post in posts %}
-    <article class="media content-section">
-        <div class="media-body">
-          <div class="article-metadata">
-            <a class="mr-2" href="#">{{ post.author }}</a>
-            <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
-          </div>
-          <h2><a class="article-title" href="#">{{ post.title }}</a></h2>
-          <p class="article-content">{{ post.content }}</p>
-        </div>
-      </article>
-    {% endfor %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Home Page</title>
+  <style>
+    #container {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+    }
+
+    #map-container {
+      width: 70%; /* Adjusted width for the map */
+    }
+
+    #map {
+      height: 500px;
+      width: 100%;
+    }
+
+    #results-container {
+      width: 30%; /* Width for the results container */
+      overflow-y: auto;
+      padding: 10px;
+    }
+
+    .location-item {
+      margin-bottom: 30px;
+      padding: 5px;
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="container">
+    <div id="map-container">
+      <h1>Find Vegan Spots In Your Area!</h1>
+      <input id="pac-input" type="text" placeholder="Enter a location">
+      <div id="map"></div>
+    </div>
+
+    <div id="results-container">
+     <h3>Search Results</h3>
+      <div id="location-list"></div>
+    </div>
+  </div>
+
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEPySCtctbXSSb-wr2BKkGJ0Mt7W5F32Q&libraries=places&callback=initialize"
+    async defer></script>
+  <script>
+    var map;
+    var service;
+    var infowindow;
+    var locationList = document.getElementById('location-list');
+
+    function initialize() {
+      var pyrmont = new google.maps.LatLng(51.505, -0.09); // Coordinates of London
+
+      map = new google.maps.Map(document.getElementById('map'), {
+        center: pyrmont,
+        zoom: 15
+      });
+
+      var input = document.getElementById('pac-input');
+      var searchBox = new google.maps.places.SearchBox(input);
+      map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+      searchBox.addListener('places_changed', function () {
+        var places = searchBox.getPlaces();
+
+        if (places.length == 0) {
+          return;
+        }
+
+        // Clear previous search results
+        locationList.innerHTML = '';
+
+        var bounds = new google.maps.LatLngBounds();
+        places.forEach(function (place) {
+          if (!place.geometry) {
+            console.log("Returned place contains no geometry");
+            return;
+          }
+
+          if (place.geometry.viewport) {
+            bounds.union(place.geometry.viewport);
+          } else {
+            bounds.extend(place.geometry.location);
+          }
+
+          // Display each place in the list
+          displayPlace(place);
+        });
+        map.fitBounds(bounds);
+      });
+
+      infowindow = new google.maps.InfoWindow();
+      service = new google.maps.places.PlacesService(map);
+    }
+
+    function displayPlace(place) {
+      var listItem = document.createElement('div');
+      listItem.classList.add('location-item');
+      listItem.innerHTML = '<strong>' + place.name + '</strong><br>' + place.formatted_address;
+      locationList.appendChild(listItem);
+    }
+  </script>
+</body>
+
+</html>
 {% endblock content %}

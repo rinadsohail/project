@@ -40,3 +40,6 @@ class Customer(User):
     
     def welcome(self):
         return "Only for customers"
+
+
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEPySCtctbXSSb-wr2BKkGJ0Mt7W5F32Q&libraries=places&callback=initialize"

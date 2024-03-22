@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-q^$gl4x@6v%%6xt!ilf+k3a&4w+o5-ufaigjq5%k0@jv@e29qv
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['http://vegify.com', '127.0.0.1']
 
 AUTH_USER_MODEL = "users.User"
 

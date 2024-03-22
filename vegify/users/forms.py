@@ -9,4 +9,8 @@ class UserRegisterForm(UserCreationForm):
     class Meta:
         model = User
         fields = ['username', 'email', 'password1', 'password2']
-        
+
+
+class BusinessRegisterForm(UserRegisterForm):
+    # Add fields specific to business users here, e.g.,
+    business_name = forms.CharField(max_length=100)
