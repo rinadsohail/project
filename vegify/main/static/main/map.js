@@ -1,69 +1,4 @@
-{% extends "main/base.html" %}
-{% block content %}
-
-<!DOCTYPE html>
-<html>
-
-<head>
-  <title>Home Page</title>
-  <style>
-    body, html {
-      height: 100%;
-      margin: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    #container {
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-    }
-
-    #map-container {
-      width: 70%; /* Adjusted width for the map */
-    }
-
-    #map {
-      height: 500px;
-      width: 100%;
-    }
-
-    #results-container {
-      width: 30%; /* Width for the results container */
-      overflow-y: auto;
-      padding: 10px;
-    }
-
-    .location-item {
-      margin-bottom: 30px;
-      padding: 5px;
-      border: 1px solid #ccc;
-    }
-  </style>
-</head>
-
-<body>
-  <div id="container">
-    <div id="map-container">
-      <h1>Find Vegan Spots In Your Area!</h1>
-      <input id="pac-input" type="text" placeholder="Enter a location">
-      <div id="map"></div>
-    </div>
-
-    <div id="results-container">
-      <h4>Search Results</h4>
-      <div id="location-list"></div>
-    </div>
-  </div>
-
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEPySCtctbXSSb-wr2BKkGJ0Mt7W5F32Q&libraries=places&callback=initialize
-  "
-    async defer></script>
-  <script>
-    var map;
+var map;
     var service;
     var infowindow;
     var locationList = document.getElementById('location-list');
@@ -119,8 +54,6 @@
       listItem.innerHTML = '<strong>' + place.name + '</strong><br>' + place.formatted_address;
       locationList.appendChild(listItem);
     }
-  </script>
-</body>
 
-</html>
-{% endblock content %}
+    initialize();
+3

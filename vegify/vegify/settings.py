@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import os
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +27,7 @@ SECRET_KEY = 'django-insecure-q^$gl4x@6v%%6xt!ilf+k3a&4w+o5-ufaigjq5%k0@jv@e29qv
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['http://vegify.com', '127.0.0.1']
+ALLOWED_HOSTS = []
 
 AUTH_USER_MODEL = "users.User"
 
@@ -81,7 +83,7 @@ WSGI_APPLICATION = 'vegify.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': os.path.join(BASE_DIR / 'db.sqlite3'),
     }
 }
 
@@ -108,6 +110,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
+GOOGLE_API_KEY = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyAEPySCtctbXSSb-wr2BKkGJ0Mt7W5F32Q&libraries=places&callback=initialize'
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
