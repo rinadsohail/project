@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth import  get_user_model
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractUser, Group
 from django.conf import settings
 
 # creates a profile for the user that prints the username of the user and their profile picture
@@ -31,15 +31,16 @@ class User(AbstractUser):
             self.role = self.base_role
             return super().save(*arg, **kwargs)
 
-class Customer(User):
-
-    base_role = User.Role.CUSTOMER
-
-    class Meta:
-        proxy = True 
-    
-    def welcome(self):
-        return "Only for customers"
-
-
+    groups = models.ManyToManyField(
+        Group,
+        verbose_name='groups',
+        blank=True,
+        related_name='user_groups'
+    )
+    user_permissions = models.ManyToManyField(
+        'auth.Permission',
+        verbose_name='user permissions',
+        blank=True,
+        related_name='user_permissions'
+    )
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEPySCtctbXSSb-wr2BKkGJ0Mt7W5F32Q&libraries=places&callback=initialize"

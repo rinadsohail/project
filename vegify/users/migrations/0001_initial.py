@@ -61,7 +61,7 @@ class Migration(migrations.Migration):
                 'indexes': [],
                 'constraints': [],
             },
-            bases=('users.user',),
+            bases=('users.User',),
             managers=[
                 ('objects', django.contrib.auth.models.UserManager()),
             ],
