@@ -78,7 +78,8 @@
     </div>
   </div>
 
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEPySCtctbXSSb-wr2BKkGJ0Mt7W5F32Q&libraries=places&callback=initialize" async defer></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEPySCtctbXSSb-wr2BKkGJ0Mt7W5F32Q&libraries=places&callback=initialize
+  " async defer></script>
   <script>
     var map;
     var service;
@@ -138,6 +139,8 @@
 
       // Call Google Places Details API to get additional info
       getPlaceDetails(place.place_id
+
+    google.maps.event.addDomListener(window, 'load', initialize);
   </script>
 </body>
 </html>
